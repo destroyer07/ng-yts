@@ -1,0 +1,20 @@
+<mat-grid-list [cols]="cols | async" rowHeight="2:3">
+  <mat-grid-tile *ngFor="let movie of movies">
+    <!--<mat-card class="card">-->
+    <!--<mat-card-header>-->
+    <!--&lt;!&ndash;<div mat-card-avatar class="example-header-image"></div>&ndash;&gt;-->
+    <!--<mat-card-title>{{ movie.title }}</mat-card-title>-->
+    <!--<mat-card-subtitle>{{ movie.imdbCode }}</mat-card-subtitle>-->
+    <!--</mat-card-header>-->
+    <!--<img mat-card-image [src]="movie.largeCoverImage" alt="{{ movie.title }}" class="character-pic">-->
+    <!--<mat-card-content>-->
+    <!--{{ movie.year }}-->
+    <!--</mat-card-content>-->
+    <!--<mat-card-actions class="actions">-->
+    <!--<button mat-button>LIKE</button>-->
+    <!--<button mat-button>SHARE</button>-->
+    <!--</mat-card-actions>-->
+    <!--</mat-card>-->
+    <app-movie-card class="card" [movie]="movie"></app-movie-card>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,13 @@
+<app-sidenav>
+
+  <h1 class="app-name title">ng YTS</h1>
+
+  <mat-nav-list class="side-menu">
+    <a mat-list-item [routerLink]="['/movies']">Movies</a>
+  </mat-nav-list>
+
+  <div class="content container">
+    <router-outlet></router-outlet>
+  </div>
+
+</app-sidenav>

@@ -1,0 +1,49 @@
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="movies" matSort (matSortChange)="sortData($event)">
+
+    <!--TODO: implement filters like http://nataliesmith.ca/blog/angular-material-filter-table-->
+
+    <!-- Checkbox Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()">
+        </mat-checkbox>
+      </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selection.toggle(row) : null"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </td>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="cover">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Cover</th>
+      <td mat-cell *matCellDef="let movie">
+        <img [src]="movie.smallCoverImage" class="movie-cover">
+      </td>
+    </ng-container>
+
+    <!-- Title Column -->
+    <ng-container matColumnDef="title">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Title</th>
+      <td mat-cell *matCellDef="let movie"> {{movie.title}} </td>
+    </ng-container>
+
+    <!-- Rating Column -->
+    <ng-container matColumnDef="rating">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Rating</th>
+      <td mat-cell *matCellDef="let movie"> {{movie.rating}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
+        (click)="selection.toggle(row)">
+    </tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]" [length]="totalMoviesFound" (page)="onPageChange($event)" showFirstLastButtons></mat-paginator>
+</div>

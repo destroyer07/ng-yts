@@ -1,0 +1,11 @@
+<!--<div [style.background-image]="'url(' + movie.largeCoverImage + ')'" class="card">-->
+  <!--{{movie.title}}-->
+<!--</div>-->
+
+<div class="card" (onClick)="openDialog()">
+<img [src]="movie.largeCoverImage" class="movie-cover">
+<div class="movie-content">
+  <h2 class="title">{{ movie.title }}</h2>
+  <h2 class="rating">{{ movie.rating }}</h2>
+</div>
+</div>

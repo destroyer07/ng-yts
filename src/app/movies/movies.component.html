@@ -1,0 +1,8 @@
+<app-movie-grid-list *ngIf="!genSets.listFormat"></app-movie-grid-list>
+<app-movie-table-list
+  *ngIf="genSets.listFormat"
+  [movies]="movies"
+  (onSort)="onSort($event)"
+  (onPaginate)="onPaginate($event)"
+  [totalMoviesFound]="viewOptions?.totalMoviesFound"
+></app-movie-table-list>
